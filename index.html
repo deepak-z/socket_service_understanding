@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let socket = new WebSocket("ws://localhost:7080/ws")
+        console.log("Attempting WebSocket Connection")
+        socket.onopen = () =>{
+            // 1. This is where the initial message is being written
+            console.log("Successfully Connectedasdf deepak bhaiya asdf asdf");
+            socket.send("This message is from client asdf asdf what is happeingasdf asdfasdf asdf");
+        }
+
+        socket.onclose = (event) =>{
+            console.log("Socket Closed Connection: ",event);
+        }
+
+        // 6. this will get displayed in console of webpage
+        // Flow is like this
+        // -> ->
+        // ^
+        // |
+        // <- <-
+
+        socket.onmessage = (msg) => {
+            console.log(msg);
+        }
+
+        socket.onerror = (error) =>{
+            console.log("Socket Error : ",error);
+        }
+    </script>
+</body>
+</html>
